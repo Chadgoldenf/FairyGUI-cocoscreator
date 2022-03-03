@@ -7849,12 +7849,16 @@ window.__extends = (this && this.__extends) || (function () {
                 console.warn(err);
             if (!this._contentItem.asset)
                 return;
-            if (this._contentItem.type == fgui.PackageItemType.Spine)
+            if (this._contentItem.type == fgui.PackageItemType.Spine) {
+                var url_back = this._url;
                 this.setSpine(this._contentItem.asset, this._contentItem.skeletonAnchor);
+                cc.game.emit("fgui-GLoader3D", this.name, url_back);
+            }
             else if (this._contentItem.type == fgui.PackageItemType.DragonBones)
                 this.setDragonBones(this._contentItem.asset, this._contentItem.atlasAsset, this._contentItem.skeletonAnchor);
         };
         GLoader3D.prototype.setSpine = function (asset, anchor, pma) {
+            if (pma === void 0) { pma = true; }
             this.url = null;
             this.clearContent();
             var node = new cc.Node();

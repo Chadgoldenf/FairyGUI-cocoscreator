@@ -226,8 +226,11 @@ namespace fgui {
             if (!this._contentItem.asset)
                 return;
 
-            if (this._contentItem.type == PackageItemType.Spine)
+            if (this._contentItem.type == PackageItemType.Spine){
+                let url_back = this._url;
                 this.setSpine(<sp.SkeletonData>this._contentItem.asset, this._contentItem.skeletonAnchor);
+                cc.game.emit("fgui-GLoader3D",this.name,url_back);
+            }
             else if (this._contentItem.type == PackageItemType.DragonBones)
                 this.setDragonBones(<dragonBones.DragonBonesAsset>this._contentItem.asset, this._contentItem.atlasAsset, this._contentItem.skeletonAnchor);
         }
