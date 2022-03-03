@@ -232,7 +232,7 @@ namespace fgui {
                 this.setDragonBones(<dragonBones.DragonBonesAsset>this._contentItem.asset, this._contentItem.atlasAsset, this._contentItem.skeletonAnchor);
         }
 
-        public setSpine(asset: sp.SkeletonData, anchor: cc.Vec2, pma?: boolean): void {
+        public setSpine(asset: sp.SkeletonData, anchor: cc.Vec2, pma: boolean=true): void {
             this.url = null;
             this.clearContent();
 
